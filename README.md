@@ -23,4 +23,5 @@ I'm using [plymouth-git](https://github.com/adi1090x/plymouth-themes)
 6. `plymouth-set-default-theme optimus` - install optimus theme. You can choice your options instead of `optimus`
 7. `sudo mkinitcpio -p linux`
 8. `sudo grub-mkconfig -o /boot/grub/grub.cfg`
+9. `reboot`
 
