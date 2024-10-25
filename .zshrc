@@ -77,7 +77,7 @@ plugins=(
   history
   npm
   sudo
-  zsh-z
+  z
   zsh-autosuggestions
   zsh-syntax-highlighting
   web-search
@@ -95,7 +95,6 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor root)
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-source $ZSH/oh-my-zsh.sh
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -111,12 +110,11 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias lvim="/Users/olegmaslo/.local/bin/lvim"
 alias zshconfig="nvim ~/.zshrc"
-alias cryptoecup="cd ~/PycharmProjects/cryptoecup && lvim"
-alias ecupt="cd ~/PycharmProjects/Cyberworld && tmux attach -t ecup && source .venv/bin/activate && lvim"
-alias ecup="cd ~/PycharmProjects/Cyberworld && source .venv/bin/activate && lvim"
+alias ecupt="cd ~/workspace/cyberworld && tmux attach -t ecup && source .venv/bin/activate && lvim"
+alias ecup="cd ~/workspace/cyberworld && source .venv/bin/activate && lvim"
 alias cryptoecuprun="cd ~/PycharmProjects/cryptoecup/frontend && npm run web"
-alias ecuprun="cd ~/PycharmProjects/Cyberworld/src/frontend && pnpm run dev"
-alias ecuprunback="source ~/PycharmProjects/Cyberworld/.venv/bin/activate && python3 ~/PycharmProjects/Cyberworld/src/api/manage.py runserver"
+alias ecuprun="cd ~/workspace/cyberworld/src/frontend && pnpm run dev"
+alias ecuprunback="source ~/workspace/cyberworld/.venv/bin/activate && python3 ~/workspace/cyberworld/src/api/manage.py runserver"
 
 # pnpm
 export PNPM_HOME="/Users/olegmaslo/Library/pnpm"
@@ -129,9 +127,6 @@ esac
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
-
-. "$HOME/.cargo/env"
 
 # bun completions
 [ -s "/Users/olegmaslo/.bun/_bun" ] && source "/Users/olegmaslo/.bun/_bun"
@@ -139,3 +134,5 @@ export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+source $ZSH/oh-my-zsh.sh
