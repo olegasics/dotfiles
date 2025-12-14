@@ -1,9 +1,11 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
+
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-export PATH=/Users/olegmaslo/.local/bin:$PATH
+
+export LOCALSTACK_AUTH_TOKEN="ls-xIkuYIHE-7052-KaBo-jOZA-pUYE599590f7"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
@@ -109,30 +111,49 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor root)
 #
 # Example aliases
 # alias lvim="/Users/olegmaslo/.local/bin/lvim"
-alias zshconfig="nvim ~/.zshrc"
+alias zshconfig="sudo nvim ~/.zshrc"
 alias ecupt="cd ~/workspace/cyberworld && tmux attach -t ecup && source .venv/bin/activate && lvim"
 alias ecup="cd ~/workspace/cyberworld && source .venv/bin/activate && lvim"
-alias cryptoecuprun="cd ~/PycharmProjects/cryptoecup/frontend && npm run web"
-alias ecuprun="cd ~/workspace/cyberworld/src/frontend && pnpm run dev"
-alias ecuprunback="source ~/workspace/cyberworld/.venv/bin/activate && python3 ~/workspace/cyberworld/src/api/manage.py runserver"
+alias erunf="cd ~/workspace/cyberworld/src/frontend && bun run dev"
+alias erunb="source ~/workspace/cyberworld/venv/bin/activate && python3 ~/workspace/cyberworld/src/api/manage.py runserver"
+alias ecuppod="podman start ecup_db && podman start ecup_redis && podman start ecup_celery"
+alias docker=podman
+alias ls="ls -lah"
+alias opentool="cd ~/workspace/cloudtool && tmux attach -t opentool && lvim"
 
 # pnpm
-export PNPM_HOME="/Users/olegmaslo/Library/pnpm"
-case ":$PATH:" in
+export PNPM_HOME="/root/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+ case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
+ esac
 # pnpm end
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+source $ZSH/oh-my-zsh.sh
+
 # bun completions
-[ -s "/Users/olegmaslo/.bun/_bun" ] && source "/Users/olegmaslo/.bun/_bun"
+[ -s "/home/oleja/.bun/_bun" ] && source "/home/oleja/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-source $ZSH/oh-my-zsh.sh
+. "$HOME/.cargo/env"
+source $HOME/.cargo/env
+export PATH="/usr/local/bin:$PATH"
+eval "$(uvx --generate-shell-completion zsh)"
+eval "$(direnv hook zsh)"
+. "/home/oleja/.deno/env"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/oleja/.lmstudio/bin"
+eval "$(pyenv init - zsh)"
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
+export PATH="$HOME/.local/bin:$PATH"
